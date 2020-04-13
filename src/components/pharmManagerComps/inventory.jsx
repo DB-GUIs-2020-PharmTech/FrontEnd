@@ -1,8 +1,11 @@
 import React from "react";
 import Logo from "./erpharmtechgrayer.png";
 import {Link} from "react-router-dom";
+import { PharmManagerRepository } from "../../API";
 
 export class Inventory extends React.Component {
+
+    pharmManagerRepository = new PharmManagerRepository();
 
     username; 
     constructor(props) {
@@ -10,7 +13,7 @@ export class Inventory extends React.Component {
         this.username = localStorage['username']
     }
 
-    drugs = [{
+    drugs  = [{
         "name": "Symbyzide Parodafinil",
         "cost": 6,
         "units": 10,
@@ -21,8 +24,14 @@ export class Inventory extends React.Component {
         "cost": 8,
         "units": 11,
         "expire" : "2/5/20"
-    },
-    ]
+    }]
+
+
+    onSort(event, sortKey){
+        const drugs = this.drugs;
+        drugs.sort((a,b) => a[sortKey].localeCompare(b[sortKey]))
+        this.setState({drugs})
+      }
 
     render() {
         return (
@@ -40,7 +49,7 @@ export class Inventory extends React.Component {
                         <tr>
                         <th><button type = "button" id = "expDate">Item Name</button></th>
                             <th><button type = "button" id = "expDate">Units</button></th>
-                            <th><button type = "button" id = "expDate">Cost per Unit</button></th>
+                            <th><button type = "button" id = "expDate" onClick={e => this.onSort(e, "cost")}>Cost per Unit</button></th>
                             <th><button type = "button" id = "expDate">Expiration Date</button></th>
                         </tr>
                             {this.drugs.map(item => (
@@ -60,7 +69,12 @@ export class Inventory extends React.Component {
                 <Link to="/pharmManager">
                     <button className = "return">Return to Homepage</button>
                     </Link> 
-           </div>
+           </div>         
         );
+    }
+
+    componentDidMount() {
+        this.pharmManagerRepository.getCart()
+            .then(drugs => this.setState({ drugs }));
     }
 }

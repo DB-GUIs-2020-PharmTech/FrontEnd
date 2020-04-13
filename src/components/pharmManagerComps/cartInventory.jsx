@@ -1,8 +1,11 @@
 import React from "react";
 import Logo from "./erpharmtechgrayer.png";
 import {Link} from "react-router-dom";
+import { PharmManagerRepository } from "../../API";
 
 export class CartInventory extends React.Component {
+
+    pharmManagerRepository = new PharmManagerRepository();
 
     username; 
     constructor(props) {
@@ -24,6 +27,11 @@ export class CartInventory extends React.Component {
     },
     ]
 
+    onSubmit(itemName) {
+            this.pharmManagerRepository
+            .addCartItem(itemName)
+    }
+
     render() {
         return (
            <div className = "body">
@@ -44,7 +52,7 @@ export class CartInventory extends React.Component {
                             {this.drugs.map(item => (
                                 <tr>
                                   <td id = "item">{item.name}
-                                  <Link to="/pharmManager/cart"><button type = "button" id = "swap">Select</button></Link>
+                                  <Link to="/pharmManager/cart"><button type = "button" id = "swap" onClick={ () => this.onSubmit(item.name) }>Select</button></Link>
                                   </td>
                                     <td id = "item">${item.cost}</td>
                                 </tr>
