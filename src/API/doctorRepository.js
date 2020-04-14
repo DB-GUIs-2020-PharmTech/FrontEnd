@@ -10,7 +10,7 @@ export class DoctorRepository {
         }
     };
 
-    getOrders() {
+    getInventory() {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}`, this.config)
                 .then(x => resolve(x.data))
@@ -21,18 +21,7 @@ export class DoctorRepository {
         });
     }
 
-    filterInventory(item) {
-        return new Promise((resolve, reject) => {
-            axios.put(`${this.url}`, item, this.config)
-                .then(x => resolve(x.data))
-                .catch(x => {
-                    alert(x); // handle error
-                    reject(x);
-                });
-        });
-    }
-
-    getInventory() {
+    getOrders() {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}`, this.config)
                 .then(x => resolve(x.data))

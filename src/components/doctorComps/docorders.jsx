@@ -14,6 +14,10 @@ export class Docorders extends React.Component {
         this.username = localStorage['username']
     }
 
+    orders = [
+        {"name": "drug", "date": "today", "status": "shipping", "units": 7}
+    ]
+
     render() {
         return (
            <div className = "body">
@@ -34,6 +38,14 @@ export class Docorders extends React.Component {
                             <th>Status</th>
                             <th>Units</th>
                         </tr>
+                        {this.orders.map(item => (
+                            <tr>
+                                <td id="item">{item.name}</td>
+                                <td id="item">{item.date}</td>
+                                <td id="item">{item.status}</td>
+                                <td id="item">{item.units}</td>
+                            </tr>
+                        ))}
                     </table>
                 </div>
                 <Link to="docinventory">

@@ -14,6 +14,10 @@ export class Docinventory extends React.Component {
         this.username = localStorage['username']
     }
 
+    currInventory = [
+        {"name": "drug", "instock": 7, "tags": "medicine", "related": "otherdrug"}
+    ]
+
     pickFilter(filterBy) {
         this.doctorRepository.filterInventory(filterBy)
     }
@@ -43,6 +47,14 @@ export class Docinventory extends React.Component {
                             <th>Tags</th>
                             <th>Related Drugs</th>
                         </tr>
+                        {this.currInventory.map(item => (
+                            <tr>
+                                <td id="item">{item.name}</td>
+                                <td id="item">{item.instock}</td>
+                                <td id="item">{item.tags}</td>
+                                <td id="item">{item.related}</td>
+                            </tr>
+                        ))}
                     </table>
                 </div>
                 <Link to="/doctor">
