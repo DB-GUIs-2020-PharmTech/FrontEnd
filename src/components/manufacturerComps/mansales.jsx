@@ -15,7 +15,8 @@ export class Mansales extends React.Component {
     }
 
     sales = [
-        {"name": "drug", "units": 7, "cost": 2, "price": 14}
+        {"name": "drug", "units": 7, "cost": 2, "price": 14},
+        {"name": "other drug", "units": 1, "cost": 2, "price": 2}
     ]
 
     // searchFor(item) {
@@ -42,6 +43,14 @@ export class Mansales extends React.Component {
                             <th>Cost Per Unit</th>
                             <th>Total Price</th>
                         </tr>
+                        {this.sales.slice(0, 1).map(item => (
+                            <tr>
+                                <td id="item">{item.name}</td>
+                                <td id="item">{item.units}</td>
+                                <td id="item">${item.cost}</td>
+                                <td id="item">${item.price}</td>
+                            </tr>
+                        ))}
                     </table>
                 </div>
                 <h1 className = "tableHeader">All Sales</h1>

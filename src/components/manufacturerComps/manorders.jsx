@@ -54,7 +54,17 @@ export class Manorders extends React.Component {
                             <th>Price Per Unit</th>
                             <th>Total Price</th>
                         </tr>
-
+                        {this.orders.slice(0, 1).map(item => (
+                            <tr>
+                                <td id="item">{item.num}</td>
+                                <td id="item">{item.date}</td>
+                                <td id="item">{item.status}</td>
+                                <td id="item">{item.item}</td>
+                                <td id="item">{item.units}</td>
+                                <td id="item">${item.priceUnit}</td>
+                                <td id="item">${item.price}</td>
+                            </tr>
+                        ))}
                     </table>
                 </div>
                 <h1 className = "tableHeader">All Outgoing Orders</h1>
