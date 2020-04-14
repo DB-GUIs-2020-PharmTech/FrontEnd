@@ -15,11 +15,12 @@ export class Docinventory extends React.Component {
     }
 
     currInventory = [
-        {"name": "drug", "instock": 7, "tags": "medicine", "related": "otherdrug"}
+        {"name": "drug", "instock": 7, "tags": "medicine", "related": "otherdrug"},
+        {"name": "otherdrug", "instock": 0, "tags": "not medicine", "related": "drug"}
     ]
 
     pickFilter(filterBy) {
-        this.doctorRepository.filterInventory(filterBy)
+        this.currInventory.filter((filterBy,status) => status > 0)
     }
 
     render() {
@@ -35,7 +36,7 @@ export class Docinventory extends React.Component {
             </nav>
             <select id = "range">
                                     <option disabled selected value = "default">Filter For</option>
-                                    <option value = "time">In-Stock</option>
+                                    <option value = "time" onChange={e => this.pickFilter(e, "instock")}>In-Stock</option>
                                     <option value = "date">Other Options</option>
                     </select>
             <h1 className = "tableHeader">All Inventory</h1>

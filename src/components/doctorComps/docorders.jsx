@@ -15,7 +15,8 @@ export class Docorders extends React.Component {
     }
 
     orders = [
-        {"name": "drug", "date": "today", "status": "shipping", "units": 7}
+        {"name": "drug", "date": "today", "status": "shipping", "units": 7},
+        {"name": "other drug", "date": "yesterday", "status": "in mail room", "units": 2}
     ]
 
     render() {
