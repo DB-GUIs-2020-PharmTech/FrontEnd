@@ -1,8 +1,11 @@
 import React from "react";
 import Logo from "./erpharmtechgrayer.png";
 import {Link} from "react-router-dom";
+import { DoctorRepository } from "../../API";
 
 export class Docorders extends React.Component {
+
+    doctorRepository = new DoctorRepository();
 
     username;
     

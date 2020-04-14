@@ -1,14 +1,21 @@
 import React from "react";
 import Logo from "./erpharmtechgrayer.png";
 import {Link} from "react-router-dom";
+import { DoctorRepository } from "../../API";
 
 export class Docinventory extends React.Component {
+
+    doctorRepository = new DoctorRepository();
 
     username;
     
     constructor(props) {
         super(props);
         this.username = localStorage['username']
+    }
+
+    pickFilter(filterBy) {
+        this.doctorRepository.filterInventory(filterBy)
     }
 
     render() {
