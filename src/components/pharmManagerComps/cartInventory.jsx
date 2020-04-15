@@ -66,6 +66,10 @@ export class CartInventory extends React.Component {
                     <button className = "return">Return to Homepage</button>
                     </Link> 
            </div>
-        );
+        );    
+    }
+    componentDidMount() {
+        this.pharmManagerRepository.getCart()
+            .then(drugs => this.setState({ drugs }));
     }
 }

@@ -106,8 +106,8 @@ export class ViewCart extends React.Component {
         );
     }
 
-    // componentDidMount() {
-    //     this.pharmManagerRepository.getCart()
-    //         .then(drugs => this.setState({ drugs }));
-    // }
+    componentDidMount() {
+        this.pharmManagerRepository.getCart()
+            .then(drugs => this.setState({ drugs }));
+    }
 }
